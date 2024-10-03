@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+        .card {
+            background-color: #1e1e1e;
+        }
+        .form-control, .btn {
+            border-radius: 0;
+        }
+        .table {
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #00b4d8;
+            border: none;
+        }
+        .btn-danger {
+            background-color: #d00000;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h2 class="text-center">Events Management</h2>
+
+        <!-- Go Back to Dashboard Button -->
+        <div class="text-right mb-3">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Go Back to Dashboard</a>
+        </div>
+
+        <!-- Event Form -->
+        <form method="POST" action="{{ url_for('events.add_event') }}">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="event_title">Event Title</label>
+                    <input type="text" class="form-control" id="event_title" name="event_title" placeholder="Event Title" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="event_datetime">Event Date and Time</label>
+                    <input type="datetime-local" class="form-control" id="event_datetime" name="event_datetime" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="event_description">Event Description</label>
+                    <input type="text" class="form-control" id="event_description" name="event_description" placeholder="Event Description" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Add Event</button>
+        </form>
+        
+        <!-- Events Table -->
+        <div class="mt-5">
+            <h3>All Events</h3>
+            <table class="table table-dark table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Event Title</th>
+                        <th scope="col">Date & Time</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                    <tr>
+                        <td>{{ event[1] }}</td> <!-- This corresponds to event_title -->
+                        <td>{{ event[2] }}</td> <!-- This corresponds to event_datetime -->
+                        <td>{{ event[3] }}</td> <!-- This corresponds to event_description -->
+                        <td>
+                            <a href="{{ url_for('events.edit_event', event_id=event[0]) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ url_for('events.delete_event', event_id=event[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

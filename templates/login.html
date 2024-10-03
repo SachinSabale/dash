@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Text color */
+            height: 100vh; /* Full height */
+            display: flex; /* Centering card */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            perspective: 1500px; /* 3D perspective */
+        }
+        .card {
+            width: 400px; /* Card width */
+            border: none; /* Remove border */
+            background-color: #1f1f1f; /* Dark card background */
+            transform: rotateY(0deg); /* Initial rotation */
+            transition: transform 0.5s; /* Smooth transition */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+        .card:hover {
+            transform: rotateY(10deg); /* Rotate on hover for 3D effect */
+        }
+        .form-control {
+            background-color: #2a2a2a; /* Dark input background */
+            border: 1px solid #444; /* Border color */
+            color: #ffffff; /* Input text color */
+        }
+        .form-control:focus {
+            background-color: #3a3a3a; /* Darker background on focus */
+            border-color: #007bff; /* Border color on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            border-color: #007bff; /* Border color */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Darker border on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center">RootNeurons</h1>
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

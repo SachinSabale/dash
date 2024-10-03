@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Text color */
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #061a02; /* Primary color */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+            transition: box-shadow 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .navbar:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .navbar-brand, .nav-link {
+            transition: color 0.3s; /* Smooth transition for text color */
+        }
+
+        .nav-link {
+            color: #ffffff; /* Text color */
+        }
+
+        .nav-link:hover {
+            color: #ffdd57; /* Change color on hover */
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
+        }
+
+        .navbar-toggler-icon {
+            background-color: rgba(255, 255, 255, 0.5); /* Light color for toggler icon */
+        }
+
+        /* Card styles */
+        .card {
+            background-color: #1f1f1f; /* Dark card background */
+            border: none; /* Remove border */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Card shadow */
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02); /* Lift effect on hover */
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            border-color: #007bff; /* Border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Darker border on hover */
+        }
+
+        /* Container styles */
+        .container {
+            padding: 20px; /* Padding around container */
+        }
+
+        h1 {
+            margin-bottom: 40px; /* Space below the heading */
+            text-align: center; /* Center the heading */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">RootNeurons Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Container -->
+    <div class="container mt-5">
+        <h1>Welcome to the Dashboard!</h1>
+        <div class="row">
+ 
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Event Management</h5>
+                        <p class="card-text">Manage upcoming events and details.</p>
+                        <a href="events" class="btn btn-primary">Go to Events</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Blog Management</h5>
+                        <p class="card-text">Manage blog posts and content.</p>
+                        <a href="blogs" class="btn btn-primary">Go to Blogs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Publications Management</h5>
+                        <p class="card-text">Manage book publications and details.</p>
+                        <a href="publications" class="btn btn-primary">Go to Publications</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Message Management</h5>
+                        <p class="card-text">View or delete messages received from users.</p>
+                        <a href="messages" class="btn btn-primary">Go to Messages</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+        .card {
+            background-color: #1e1e1e;
+        }
+        .form-control, .btn {
+            border-radius: 0;
+        }
+        .btn-primary {
+            background-color: #00b4d8;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h2 class="text-center">Edit Event</h2>
+
+        <!-- Edit Event Form -->
+        <form method="POST" action="{{ url_for('events.edit_event', event_id=event[0]) }}">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="event_title">Event Title</label>
+                    <input type="text" class="form-control" id="event_title" name="event_title" value="{{ event[1] }}" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="event_datetime">Event Date and Time</label>
+                    <input type="datetime-local" class="form-control" id="event_datetime" name="event_datetime" value="{{ event[2] }}" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="event_description">Event Description</label>
+                    <input type="text" class="form-control" id="event_description" name="event_description" value="{{ event[3] }}" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Update Event</button>
+            <a href="{{ url_for('events.events') }}" class="btn btn-secondary">Back to Events</a>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

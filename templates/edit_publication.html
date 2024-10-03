@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Publication</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000000; /* Super dark black background */
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            background-color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+        .card-content {
+            padding: 40px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ff00; /* Bright green for headings */
+        }
+        .btn-primary {
+            background-color: #00ff00; /* Neon green button */
+            border: none;
+        }
+        .btn-secondary {
+            background-color: #555555; /* Lighter black for cancel */
+            border: none;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            opacity: 0.8;
+        }
+        .form-control {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #444444;
+            color: #ffffff;
+            border-color: #00ff00;
+            box-shadow: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-content">
+            <h2>Edit Publication</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('publications.edit_publication', id=publication[0]) }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ publication[1] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ publication[2] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="pdf_file">PDF File (Leave blank to keep current)</label>
+                    <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf">
+                </div>
+                <div class="form-group">
+                    <label for="cover_image">Cover Image (Leave blank to keep current)</label>
+                    <input type="file" class="form-control" id="cover_image" name="cover_image" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Update Publication</button>
+                <a href="{{ url_for('publications.list_publications') }}" class="btn btn-secondary btn-block">Cancel</a>
+            </form>
+        </div>
+        <div class="footer">
+            <button class="btn btn-secondary" onclick="goToDashboard()">Go to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        function goToDashboard() {
+            window.location.href = "{{ url_for('dashboard') }}";
+        }
+    </script>
+</body>
+</html>

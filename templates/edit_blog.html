@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+            background-color: #000000; /* Super dark black background */
+            color: #ffffff; /* Light text color */
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #00ff00; /* Neon green for heading */
+            text-align: center;
+        }
+        .container {
+            background-color: #1a1a1a; /* Dark container background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Subtle shadow */
+            padding: 20px;
+        }
+        .form-group label {
+            color: #00ff00; /* Neon green labels */
+        }
+        input, textarea {
+            background-color: #333333; /* Dark input background */
+            color: #ffffff; /* Light text color for inputs */
+        }
+        input:focus, textarea:focus {
+            background-color: #444444; /* Slightly lighter focus state */
+            border-color: #00ff00;
+            box-shadow: none;
+            color: #ffffff;
+        }
+        .form-control::placeholder {
+            color: #999999; /* Placeholder text color */
+        }
+        .btn-success {
+            background-color: #00ff00; /* Neon green button */
+            border-color: #00ff00;
+        }
+        .btn-success:hover {
+            opacity: 0.8;
+        }
+        .btn-secondary {
+            background-color: #555555; /* Light black for secondary button */
+            border-color: #555555;
+        }
+        .btn-secondary:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Blog</h1>
+        
+        <form method="POST" action="{{ url_for('blogs.edit_blog', blog_id=blog[0]) }}">
+            <div class="form-group">
+                <label for="blog_title">Blog Title:</label>
+                <input type="text" class="form-control" name="blog_title" value="{{ blog[1] }}" placeholder="Enter blog title" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="blog_date">Blog Date:</label>
+                <input type="date" class="form-control" name="blog_date" value="{{ blog[2] }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="blog_description">Blog Description:</label>
+                <textarea class="form-control" name="blog_description" rows="4" placeholder="Enter blog description" required>{{ blog[3] }}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="blog_link">Blog Link:</label>
+                <input type="url" class="form-control" name="blog_link" value="{{ blog[4] }}" placeholder="Enter blog URL" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Update Blog</button>
+            <a href="{{ url_for('blogs.blogs') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
